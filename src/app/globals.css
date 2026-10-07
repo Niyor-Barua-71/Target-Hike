@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #070907;
+  --color-pine: #0b0f0c;
+  --color-moss: #101610;
+  --color-ridge: #1a211a;
+  --color-line: rgba(236, 229, 213, 0.12);
+  --color-bone: #ece5d5;
+  --color-fog: #9aa096;
+  --color-ash: #6b7168;
+  --color-ember: #e8621c;
+  --color-gold: #e8a83e;
+  --color-olive: #5b7a5e;
+  --color-ice: #bfd6ea;
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-grotesk), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jbmono), "SF Mono", monospace;
+
+  --animate-marquee: marquee 42s linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  --animate-pulse-dot: pulse-dot 2.2s ease-in-out infinite;
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.35;
+      transform: scale(0.7);
+    }
+  }
+
+  --animate-spin-slow: spin 14s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-ember);
+  color: var(--color-void);
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ridge);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ember);
+}
+
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(236, 229, 213, 0.28);
+  color: transparent;
+}
+
+.contour-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='1600' height='900' viewBox='0 0 1600 900' xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23ece5d5' stroke-opacity='0.06'%3E%3Cpath d='M-50 700 C 200 640, 320 760, 560 700 S 980 560, 1230 640 S 1500 760, 1700 690'/%3E%3Cpath d='M-60 640 C 190 580, 330 700, 570 640 S 980 500, 1240 580 S 1510 700, 1710 630'/%3E%3Cpath d='M-70 580 C 180 520, 340 640, 580 580 S 990 440, 1250 520 S 1520 640, 1720 570'/%3E%3Cpath d='M-80 520 C 170 460, 350 580, 590 520 S 1000 380, 1260 460 S 1530 580, 1730 510'/%3E%3Cpath d='M-90 460 C 160 400, 360 520, 600 460 S 1010 320, 1270 400 S 1540 520, 1740 450'/%3E%3Cpath d='M-100 400 C 150 340, 370 460, 610 400 S 1020 260, 1280 340 S 1550 460, 1750 390'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+}
